@@ -14,7 +14,6 @@ void ClockInit(void);
 void GPIO_Init(GPIO_TypeDef *port, unsigned int pin, GPIO_Mode mode);												 
 void Delay(unsigned int duration);
 void USART2_Init(void);
-void SysTickInit(void);
 
 // Functions										 
 char USART2_RX(void);

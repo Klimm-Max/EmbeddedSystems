@@ -69,9 +69,11 @@ void ClockInit(void) {
 		
 	RCC->CFGR = RCC_CFGR_SW_PLL;																				//Set the system clock source from PLL
 	RCC->CR &= ~RCC_CR_MSION;																						//Turn off MSI to reduce power consumption
-}
-
-void SysTickInit(void) {
+	
 	SysTick->LOAD = SysTick->CALIB & SysTick_LOAD_RELOAD_Msk;						//Read the calibrated value of 24-bit, and put it in the reload value register
 	SysTick->CTRL = SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;	//Enable SysTick with the exception request
+}
+
+void SysTick_Handler(void) {
+	sysMillis++;
 }
