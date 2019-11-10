@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>usart</OutputName>
+          <OutputName>task1</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -383,9 +383,19 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>st_bootstrap.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\st_bootstrap.h</FilePath>
+            </File>
+            <File>
+              <FileName>st_bootstrap.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\usart.c</FilePath>
+              <FilePath>.\st_bootstrap.c</FilePath>
+            </File>
+            <File>
+              <FileName>task1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\task1.c</FilePath>
             </File>
           </Files>
         </Group>
