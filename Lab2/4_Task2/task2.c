@@ -14,11 +14,19 @@ int main(void) {
 
 	USART2_TX_String("Welcome to embedded Systems\n");
 	while (1) {
-		if (GPIOA->IDR & GPIO_IDR_ID1) USART2_TX('L');										// If GPIOA data register is set and data register on Pin 1 is set -> send character to USART
-		else if (GPIOA->IDR & GPIO_IDR_ID2) USART2_TX('R');
-		else if (GPIOA->IDR & GPIO_IDR_ID3) USART2_TX('U');
-		else if (GPIOA->IDR & GPIO_IDR_ID5) USART2_TX('D');
-		else if (GPIOA->IDR & GPIO_IDR_ID0) USART2_TX('S');
-		Delay(500);
+		char c = USART2_RX();
+		
+		if (c == 'a') GPIOB->BSRR = GPIO_BSRR_BS2;
+		else if (c == 'w') GPIOB->BSRR = GPIO_BSRR_BR2;
+		else if (c == 'd') GPIOE->BSRR = GPIO_BSRR_BS8;
+		else if (c == 's') GPIOE->BSRR = GPIO_BSRR_BR8;
+		else if (c == ' ') {
+			GPIOB->BSRR = GPIO_BSRR_BR2;
+			GPIOE->BSRR = GPIO_BSRR_BR8;
+		} else {
+			USART2_TX_String("Not able to process input...\n");
+		}
+		
+		Delay(500);																												// make input more smooth with preventing spam
 	}
 }
